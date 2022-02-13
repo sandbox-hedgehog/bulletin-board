@@ -5,6 +5,7 @@ import chalkboard.me.bulletinboard.domain.model.UserComment;
 import chalkboard.me.bulletinboard.domain.model.UserCommentRepository;
 import chalkboard.me.bulletinboard.domain.model.UserComments;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,10 +18,11 @@ public class UserCommentUseCase {
      * @param commentForm ユーザの入力データ
      * @return 表示するデータ
      */
-    public void write(CommentForm commentForm) {
+    public void write(CommentForm commentForm, User user) {
         // フォームオブジェクトからドメインオブジェクトへ変換
         UserComment userComment = UserComment.from(
                 commentForm.getName(),
+                user.getUsername(),
                 commentForm.getMailAddress(),
                 commentForm.getComment()
         );

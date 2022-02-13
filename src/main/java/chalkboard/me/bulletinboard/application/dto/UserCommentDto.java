@@ -9,12 +9,14 @@ import lombok.RequiredArgsConstructor;
 @Getter
 public class UserCommentDto {
     private final String name;
+    private final String userId;
     private final String mailAddress;
     private final String comment;
 
     public static UserCommentDto from(UserComment userComment) {
         return new UserCommentDto(
                 userComment.getName().toString(),
+                userComment.getUserId().toString(),
                 userComment.getMailAddress().toString(),
                 userComment.getComment().toString()
         );

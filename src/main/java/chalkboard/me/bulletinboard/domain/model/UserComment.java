@@ -13,12 +13,14 @@ import java.util.Random;
 @Getter
 public class UserComment {
     private final Name name;
+    private final UserId userId;
     private final MailAddress mailAddress;
     private final Comment comment;
 
-    public static UserComment from(String name, String mailAddress, String comment) {
+    public static UserComment from(String name, String userId, String mailAddress, String comment) {
         return new UserComment(
                 Name.from(name),
+                UserId.from(userId),
                 MailAddress.from(mailAddress),
                 Comment.from(comment)
         );

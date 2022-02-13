@@ -28,6 +28,7 @@ public class UserCommentDatasource implements UserCommentRepository {
         return UserComments.from(
             dtos.stream().map( dto -> UserComments.UserComment.from(
                     dto.getId(),
+                    dto.getUserId(),
                     dto.getName(),
                     dto.getMailAddress(),
                     dto.getComment(),
